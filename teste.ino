@@ -6,10 +6,6 @@
 #include <WiFiManager.h> 
 ESP8266ZabbixSender zSender;
 
-/* WiFi settings */
-//String ssid = "Brasilia 211  ";
-//String pass = "riodejaneiro";
-
 /* Zabbix server setting */
 #define SERVERADDR 192, 168, 0, 56 // Zabbix server Address
 #define ZABBIXPORT 10051      // Zabbix erver Port
@@ -19,10 +15,6 @@ boolean checkConnection();
 
 void setup() {
   Serial.begin(115200);
-//WiFi.mode(WIFI_STA);
-//WiFi.disconnect();
-//delay(100);
-//WiFi.begin(ssid.c_str(), pass.c_str());
   WiFiManager wifiManager;
   wifiManager.autoConnect("AutoConnectAP");
   Serial.println("connected...yeey :)");
@@ -30,25 +22,25 @@ void setup() {
   }
   zSender.Init(IPAddress(SERVERADDR), ZABBIXPORT, ZABBIXAGHOST); // Init zabbix server information
 }
-
-void loop() {
+  int counter1 = 1;
+  int counter2 = 1;
   
-  static int counter1 = 1;
-  static int counter2 = 1;
+void loop() { 
   double seno = sin(counter1);
   double cosseno = cos(counter2);
-  checkConnection();                // Check wifi connection
-  zSender.ClearItem();              // Clear ZabbixSender's item list
-  zSender.AddItem("counter1", (double)seno); // Exmaple value of zabbix trapper item
-  zSender.AddItem("counter2", (double)cosseno); // Exmaple value of zabbix trapper item
-  if (zSender.Send() == EXIT_SUCCESS) {     // Send zabbix items
+  checkConnection();                
+  zSender.ClearItem();              
+  zSender.AddItem("counter1", seno); 
+  zSender.AddItem("counter2", cosseno);
+  if (zSender.Send() == EXIT_SUCCESS) {     
     Serial.println("ZABBIX SEND: OK");
   } else {
     Serial.println("ZABBIX SEND: NG");
   }
   counter1 += 1;
   counter2 += 1;
-  delay(1000); // wait 1sec
+  Serial.println(counter1);
+  delay(1000); 
 }
 
 boolean checkConnection() {
@@ -58,7 +50,7 @@ boolean checkConnection() {
     if (WiFi.status() == WL_CONNECTED) {
       Serial.println();
       Serial.println("Connected!");
-      return (true);
+      return true;
     }
     delay(500);
     Serial.print(".");
