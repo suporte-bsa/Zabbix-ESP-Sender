@@ -4,9 +4,9 @@
 #include <DNSServer.h>
 #include <ESP8266WebServer.h>
 #include <WiFiManager.h> 
-ESP8266ZabbixSender zSender;
 #define INTERVAL 1000
-int counter1 = 1, counter2=2;
+ESP8266ZabbixSender zSender;
+int counter1 = 1, counter2 = 1;
   
 /* Zabbix server setting */
 #define SERVERADDR 192, 168, 0, 56 // Zabbix server Address
@@ -15,22 +15,31 @@ int counter1 = 1, counter2=2;
 
 void setup() {
   Serial.begin(115200);
-  WiFiManager wifiManager;
-  wifiManager.autoConnect("AutoConnectAP");
+  WiFiManager wm;
+  wm.autoConnect("AutoConnectAP");
   Serial.println("connected...yeey :)");
   zSender.Init(IPAddress(SERVERADDR), ZABBIXPORT, ZABBIXAGHOST); // Init zabbix server information
 }
   
-void loop() { 
-  double seno = sin(counter1);
-  double cosseno = cos(counter2);
-  checkConnection();                
+/**
+ * sendItems receives two parameters and checks whether 
+ * zSender was capable of delivering them or not
+ *
+ * @param seno cosseno float values for sin and cossine values to be sent.
+ */
+void sendItems(float seno, float cosseno) {
   zSender.ClearItem();              
   zSender.AddItem("counter1", seno); 
   zSender.AddItem("counter2", cosseno);
   zSender.Send() == EXIT_SUCCESS ? Serial.println("ZABBIX SEND: OK") : Serial.println("ZABBIX SEND: NG");
-  counter1 += 1;
-  counter2 += 1;
+}
+
+void loop() { 
+  double seno = sin(counter1);
+  double cosseno = cos(counter2);
+  boolean isConnected = checkConnection();
+  isConnected ? sendItems(seno, cosseno) : setup();
+  counter1 += 1, counter2 += 1;
   delay(INTERVAL); 
 }
 
