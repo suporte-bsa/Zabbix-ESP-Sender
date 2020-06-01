@@ -11,15 +11,11 @@ ESP8266ZabbixSender zSender;
 #define ZABBIXPORT 10051      // Zabbix erver Port
 #define ZABBIXAGHOST "Teste"  // Zabbix item's host name
 
-boolean checkConnection();
-
 void setup() {
   Serial.begin(115200);
   WiFiManager wifiManager;
   wifiManager.autoConnect("AutoConnectAP");
   Serial.println("connected...yeey :)");
-  while (!checkConnection()) {
-  }
   zSender.Init(IPAddress(SERVERADDR), ZABBIXPORT, ZABBIXAGHOST); // Init zabbix server information
 }
   int counter1 = 1;
@@ -32,11 +28,7 @@ void loop() {
   zSender.ClearItem();              
   zSender.AddItem("counter1", seno); 
   zSender.AddItem("counter2", cosseno);
-  if (zSender.Send() == EXIT_SUCCESS) {     
-    Serial.println("ZABBIX SEND: OK");
-  } else {
-    Serial.println("ZABBIX SEND: NG");
-  }
+  zSender.Send() == EXIT_SUCCESS ? Serial.println("ZABBIX SEND: OK") : Serial.println("ZABBIX SEND: NG");
   counter1 += 1;
   counter2 += 1;
   Serial.println(counter1);
