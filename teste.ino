@@ -5,7 +5,9 @@
 #include <ESP8266WebServer.h>
 #include <WiFiManager.h> 
 ESP8266ZabbixSender zSender;
-
+#define INTERVAL 1000
+  int counter1 = 1, counter2=2;
+  
 /* Zabbix server setting */
 #define SERVERADDR 192, 168, 0, 56 // Zabbix server Address
 #define ZABBIXPORT 10051      // Zabbix erver Port
@@ -18,8 +20,6 @@ void setup() {
   Serial.println("connected...yeey :)");
   zSender.Init(IPAddress(SERVERADDR), ZABBIXPORT, ZABBIXAGHOST); // Init zabbix server information
 }
-  int counter1 = 1;
-  int counter2 = 1;
   
 void loop() { 
   double seno = sin(counter1);
@@ -31,8 +31,7 @@ void loop() {
   zSender.Send() == EXIT_SUCCESS ? Serial.println("ZABBIX SEND: OK") : Serial.println("ZABBIX SEND: NG");
   counter1 += 1;
   counter2 += 1;
-  Serial.println(counter1);
-  delay(1000); 
+  delay(INTERVAL); 
 }
 
 boolean checkConnection() {
@@ -44,7 +43,7 @@ boolean checkConnection() {
       Serial.println("Connected!");
       return true;
     }
-    delay(500);
+    delay(INTERVAL/2);
     Serial.print(".");
     count++;
   }
