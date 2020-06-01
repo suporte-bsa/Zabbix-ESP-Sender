@@ -21,12 +21,6 @@ void setup() {
   zSender.Init(IPAddress(SERVERADDR), ZABBIXPORT, ZABBIXAGHOST); // Init zabbix server information
 }
   
-/**
- * sendItems receives two parameters and checks whether 
- * zSender was capable of delivering them or not
- *
- * @param seno cosseno float values for sin and cossine values to be sent.
- */
 void sendItems(float seno, float cosseno) {
   zSender.ClearItem();              
   zSender.AddItem("counter1", seno); 
