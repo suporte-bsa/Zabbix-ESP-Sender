@@ -6,7 +6,7 @@
 #include <WiFiManager.h> 
 ESP8266ZabbixSender zSender;
 #define INTERVAL 1000
-  int counter1 = 1, counter2=2;
+int counter1 = 1, counter2=2;
   
 /* Zabbix server setting */
 #define SERVERADDR 192, 168, 0, 56 // Zabbix server Address
