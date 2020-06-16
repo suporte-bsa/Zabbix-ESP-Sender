@@ -58,3 +58,18 @@ Para configurar o host no zabbix, adicione o IP e o host no código como mostrad
 #define ZABBIXPORT 10051      // Zabbix erver Port
 #define ZABBIXAGHOST "ESP01"  // Zabbix item's host name
 ```
+
+Após isso, acesse o Zabbix. Na aba "Configuration", clique em "Hosts" e "Create new Host";
+
+- Adicione o mesmo Host name.
+- Escolha o grupo 
+- Adicione a posta em "Interfaces".
+
+Então, clique em "Items" e "Create item";
+Adicione a configuração conforme a imagem:
+
+![](capturar.png)
+
+Faça o mesmo para a Umidade.
+
+E Voilà, você poderá visualizar os dados em Latest Data.
