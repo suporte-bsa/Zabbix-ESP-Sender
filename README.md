@@ -17,9 +17,10 @@ Para o correto funcionamento do upload, necessita-se:
  - Arduino IDE  ([Download](https://www.arduino.cc/en/main/software));
  - As bibliotecas:
  WifiManager.h ([Download](https://github.com/tzapu/WiFiManager));
- Arduino_SNMP.h ([Download](https://github.com/fusionps/Arduino_SNMP));
- WiFiUdp.h ([Download](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/WiFiUdp.h));
- DHT.h ([Download](https://github.com/adafruit/DHT-sensor-library)).
+ ESP8266ZabbixSender.h ([Download](https://github.com/zaphodus/ESP8266ZabbixSender));
+ DNSServer.h ([Download](https://github.com/esp8266/Arduino/tree/master/libraries/DNSServer));
+ ESP8266WebServer.h ([Download](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WebServer/src/ESP8266WebServer.h)).
+ DHT.h (Baixar na ide)
  
  - Módulo ESP-01;
  - Sensor DHT22;
