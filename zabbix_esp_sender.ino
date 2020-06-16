@@ -30,6 +30,7 @@ void setup() {
   //Setup do DHT
   dht.begin();
   /* Setup WIFI */
+  WiFi.disconnect(); //utilizado caso a ESP já tenha conectado em alguma rede antes
   WiFiManager wm;
   wm.autoConnect("AutoConnectAP");
   Serial.println("connected...yeey :)");

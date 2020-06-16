@@ -49,6 +49,13 @@ Escolha um baud de 115200.
 
 ## WifiManager.h
 
+Para conectar ao Wifi, clique na rede "helloesp". Após isso, digite o endereço "http://192.168.4.1/" no navegador. 
+Ele irá direcionar para a seguinte tela:
+![](wifimanager.PNG)
+
+Clique em "Configure Wifi" 
+Clique no ssid e insira a senha.
+
 
 ## Configuração - Zabbix
 
