@@ -75,7 +75,7 @@ Após isso, acesse o Zabbix. Na aba "Configuration", clique em "Hosts" e "Create
 Então, clique em "Items" e "Create item";
 Adicione a configuração conforme a imagem:
 
-![](capturar.png)
+![](Capturar.PNG)
 
 Faça o mesmo para a Umidade.
 
