@@ -1,4 +1,4 @@
-# esp01
+# Zabbix-ESP-Sender
 Integração entre a ferramenta Zabbix e uma ESP-01 utilizada para coletar dados de temperatura e umidade. Os dados são enviados para o Zabbix via Zabbix Sender.
 
 # Esp-01 - Zabbix - Zabbix Sender (Monitor de temperatura e umidade)
