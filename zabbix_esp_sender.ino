@@ -9,7 +9,7 @@
 /* DEFS */
 #define INTERVAL 1000
 ESP8266ZabbixSender zSender;
-#define DHTPIN D1
+#define DHTPIN 2
 #define DHTTYPE DHT22 
 DHT dht(DHTPIN, DHTTYPE);
 
